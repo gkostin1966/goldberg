@@ -5,15 +5,8 @@ Copyright (c) 1989 by Addision-Wesley Publishing Company, Inc.
 ISBN 0-201-15767-5
 ***
 [![Floobits Status](https://floobits.com/gkostin/goldberg.svg)](https://floobits.com/gkostin/goldberg/redirect)
-## Computer Assignments
-Chapter 1 / A Gentle Introduction to Genetic Algorithms
-* A. pseudorandom
-* B. roulette
-* C. generator
-* D. crossover
-* E. mutation
-* F. population
-
+## [Computer Assignments](https://github.com/gkostin1966/goldberg/wiki/Computer_Assignments)
+[Chapter 1 / A Gentle Introduction to Genetic Algorithms](https://github.com/gkostin1966/goldberg/wiki/Chapter_1)
 ## Exercise Quick Setup Guide
 ### git
 ```
