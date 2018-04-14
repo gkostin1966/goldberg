@@ -1,9 +1,0 @@
-require: rubocop-rspec
-
-AllCops:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'

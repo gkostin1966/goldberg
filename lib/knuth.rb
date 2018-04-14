@@ -14,28 +14,24 @@
 #
 class Knuth
   def initialize
-    @random_number_array = Array.new(56, 0.0)
+    @random_number_array = Array.new(55, 0.0)
     @random_number = 0
   end
 
   # advance_random - retrieves a new batch of pseudorandom numbers.
   # rubocop:disable Metrics/MethodLength
   def advance_random
-    (1..24).each do |index|
+    (0..23).each do |index|
       new_random = @random_number_array[index] -
                    @random_number_array[index + 31]
-      if new_random < 0
-        new_random += 1
-        @random_number_array[index] = new_random
-      end
+      new_random += 1 if new_random < 0
+      @random_number_array[index] = new_random
     end
-    (25..55).each do |index|
+    (24..54).each do |index|
       new_random = @random_number_array[index] -
                    @random_number_array[index - 24]
-      if new_random < 0
-        new_random += 1
-        @random_number_array[index] = new_random
-      end
+      new_random += 1 if new_random < 0
+      @random_number_array[index] = new_random
     end
     nil
   end
@@ -44,11 +40,11 @@ class Knuth
   # warmup_random - initializes a random number generator.
   # rubocop:disable Metrics/MethodLength
   def warmup_random(random_seed)
-    @random_number_array[55] = random_seed
+    @random_number_array[54] = random_seed
     new_random = 1e-9
     prev_random = random_seed
-    (1..54).each do |index|
-      random_index = 21 * index % 55
+    (0..53).each do |index|
+      random_index = 21 * (index + 1) % 54
       @random_number_array[random_index] = new_random
       new_random = prev_random - new_random
       new_random += 1 if new_random < 0
@@ -65,8 +61,8 @@ class Knuth
   # See Knuth, D. (1969), v. 2 for details
   def random
     @random_number += 1
-    if @random_number > 55
-      @random_number = 1
+    if @random_number > 54
+      @random_number = 0
       advance_random
     end
     @random_number_array[@random_number]
