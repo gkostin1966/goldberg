@@ -4,6 +4,7 @@ require_relative '../lib/knuth'
 
 RSpec.describe Knuth do
   let(:knuth) { described_class.new }
+  let(:debug) { Debug.new }
 
   describe '#advance_random' do
     subject { knuth.advance_random }
@@ -20,9 +21,14 @@ RSpec.describe Knuth do
   end
 
   describe '#random' do
-    subject { knuth.random }
+    subject(:random) { knuth.random }
 
     it { is_expected.to be_between(0, 1) }
+
+    it 'debug' do
+      debug.puts("debug.puts(#{random})")
+      expect(random).to be_between(0, 1)
+    end
   end
 
   describe '#flip' do
